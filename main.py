@@ -8,4 +8,4 @@ def output_fields():
     
     transcription = "lorem fdsajk;fndsak;jfndjksalfnkdjlsafnkdlsjafnkjdsa"
     
-    return "<p>Hello, World!</p>"
+    return render_template('index.html', transcription=transcription)

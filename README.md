@@ -6,4 +6,4 @@
 
 2. `pip install requirements.txt`
 
-3. Run `flask --app main run`
+3. Run `flask --app main --debug run`
