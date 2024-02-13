@@ -35,8 +35,15 @@
         </div>
         <div class="row">
             <div class="col main h-100 p-5">
-                <h2>FIHR Query</h2>
-                <pre> {{ fihr_json }} </pre>
+                <div class="row">
+                    <div class="col">
+                        <h2>FIHR Query</h2>
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-outline-secondary" type="button" id="fihrCopy">Copy</button>
+                    </div>
+                </div>
+                <pre id="fihrOutput"> {{ fihr_json }} </pre>
             </div>
         </div>
         
@@ -55,7 +62,19 @@
             console.error('Error in copying text: ', err);
         });
     });
+
+    document.getElementById('fihrCopy').addEventListener('click', function() {
+        const copyText = document.getElementById('fihrOutput').textContent;
+        navigator.clipboard.writeText(copyText).then(() => {
+            // Success feedback
+            alert('Text copied to clipboard');
+        }).catch(err => {
+            // Error feedback
+            console.error('Error in copying text: ', err);
+        });
+    });
     
 </script>
 
 {% endblock %}
+
