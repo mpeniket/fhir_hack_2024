@@ -1,9 +1,15 @@
-from flask import render_template, redirect, request, Flask
+from flask import render_template, redirect, request, Flask, Response
 from utils.utils import upload_file_to_folder
-import whisper
+
 from utils.utils import openai_chat_completion
 from uploads.transcription import transcription
+from openai import OpenAI, audio
+import openai
 
+
+OPENAI_API_KEY = "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"
+
+client = OpenAI(api_key=OPENAI_API_KEY)
 
 app = Flask(__name__)
 
@@ -18,20 +24,45 @@ def index():
 @app.route("/upload", methods=["POST"])
 def upload_file():
 
-    uploaded_filepath = upload_file_to_folder(request.files)
+    import requests
 
-    model = whisper.load_model("base")
-    options = whisper.DecodingOptions(language="en")
-    result = model.transcribe(uploaded_filepath, verbose=True, **options)
+    url = "https://api.openai.com/v1/audio/transcriptions"
+    headers = {
+        "Authorization": f"Bearer {OPENAI_API_KEY}",
+    }
 
-    return redirect("/")
+    data = {
+        "model": "whisper-1",
+    }
+
+    uploaded_file_path = upload_file_to_folder(request.files)
+
+    with open(uploaded_file_path, "rb") as file:
+        files = {
+            "file": file
+        }
+        data = {
+            "model": "whisper-1",
+        }
+        # Make the POST request
+        response = requests.post(url, headers=headers, files=files, data=data)
+        print(response.json())
+        transcription = response.json()['text']
+    
+        with open('uploads/transcription.txt', 'w') as f:
+            f.write(transcription)
+
+
+    return redirect("/encoding")
 
 
 # This endpoint will be used to send the text to OpenAI
 @app.route("/encoding", methods=["POST", "GET"])
 def encoding():
 
-    transcription = transcription
+    transcription = None
+    with open('/uploads/transcription.txt', 'r') as f:
+        transcription = f.read()
     res = openai_chat_completion(transcription)
 
     # return render_template("/form.html")
