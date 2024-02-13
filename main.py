@@ -31,8 +31,8 @@ def upload_file():
 @app.route("/encoding", methods=["POST", "GET"])
 def encoding():
 
-    transcription = transcription
-    res = openai_chat_completion(transcription)
+    t = transcription
+    res = openai_chat_completion(t)
 
     # return render_template("/form.html")
     return render_template("/form.html", field1=transcription, field2=res)
