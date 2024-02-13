@@ -1,12 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    {{ transcription }}
-    <p>saasas</p>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container main">
+    <div class="row h-100 justify-content-center">
+        <div class="col text-center d-flex flex-column align-items-center justify-content-center">
+            <div class="row">
+                <h1 class="">Consultatation Transcriber - > FIHR Query</h1>
+            </div>
+            <div class="row m-5">
+                <div class="col">
+                    <h2>Upload Consultation Audio</h2>
+                    <form action="/upload" method="post" enctype="multipart/form-data">
+                        <input type="file" name="file">
+                        <input type="submit" value="Upload">
+                    </form>
+                </div>
+            </div>
+            {% if url %}
+            <p>File uploaded successfully: <a href="{{ url }}">{{ url }}</a></p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

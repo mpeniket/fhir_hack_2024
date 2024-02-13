@@ -4,8 +4,8 @@ from flask import render_template
 app = Flask(__name__)
 
 @app.route("/")
-def output_fields():
+def index():
     
     transcription = "lorem fdsajk;fndsak;jfndjksalfnkdjlsafnkdlsjafnkjdsa"
     
-    return render_template('index.html', transcription=transcription)
+    return render_template('index.html')
