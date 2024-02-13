@@ -1,3 +1,4 @@
+import json
 transcription = """Hello, could I confirm your full name and date of birth please?
 Martha Coles Jones, 13th of the 9th, 98.
 Lovely to meet you. What's brought you in today?
@@ -20,3 +21,132 @@ I have a desk job after that's my job.
 We're nine to five.
 That's great. Thank you for coming in.
 I'll point you to some talking therapies and we can look into prescribing some medications that might help."""
+
+# {  "resourceType": "Patient",  "name": [    {      "use": "official",      "family": "Coles Jones",      "given": [        "Martha"      ]    }  ],  "birthDate": "1998-09-13",  "communication": [    {      "language": {        "coding": [          {            "system": "http://terminology.hl7.org/CodeSystem/languages",            "code": "en-US",            "display": "English"          }        ]      }    }  ]}
+res = json.dumps(
+{
+    "resourceType": "ProcedureRequest",
+    "status": "draft",
+    "intent": "order",
+    "subject": {
+        "reference": "Patient/1234"
+    },
+    "code": {
+        "coding": [
+            {
+                "system": "http://loinc.org",
+                "code": "433932003",
+                "display": "Consultation"
+            }
+        ]
+    },
+    "performer": {
+        "reference": "Practitioner/5678"
+    },
+    "reasonCode": [
+        {
+            "coding": [
+                {
+                    "system": "http://snomed.info/sct",
+                    "code": "127305003",
+                    "display": "Depressive disorder, single episode, mild"
+                }
+            ]
+        }
+    ],
+    "supportingInfo": [
+        {
+            "category": {
+                "coding": [
+                    {
+                        "system": "http://hl7.org/fhir/ValueSet/clinical-findings",
+                        "code": "1100",
+                        "display": "Symptoms"
+                    }
+                ]
+            },
+            "code": {
+                "coding": [
+                    {
+                        "system": "http://snomed.info/sct",
+                        "code": "25064002",
+                        "display": "Sad mood"
+                    }
+                ]
+            },
+            "valueCodeableConcept": {
+                "coding": [
+                    {
+                        "system": "http://snomed.info/sct",
+                        "code": "162864005",
+                        "display": "Depressed mood"
+                    }
+                ]
+            }
+        },
+        {
+            "category": {
+                "coding": [
+                    {
+                        "system": "http://hl7.org/fhir/ValueSet/clinical-findings",
+                        "code": "1000",
+                        "display": "Medical conditions"
+                    }
+                ]
+            },
+            "code": {
+                "coding": [
+                    {
+                        "system": "http://snomed.info/sct",
+                        "code": "37847002",
+                        "display": "Headache"
+                    }
+                ]
+            },
+            "valueCodeableConcept": {
+                "coding": [
+                    {
+                        "system": "http://snomed.info/sct",
+                        "code": "25064002",
+                        "display": "Sad mood"
+                    }
+                ]
+            }
+        },
+        {
+            "category": {
+                "coding": [
+                    {
+                        "system": "http://hl7.org/fhir/ValueSet/clinical-findings",
+                        "code": "1100",
+                        "display": "Symptoms"
+                    }
+                ]
+            },
+            "code": {
+                "coding": [
+                    {
+                        "system": "http://snomed.info/sct",
+                        "code": "255581003",
+                        "display": "Fatigue"
+                    }
+                ]
+            },
+            "valueCodeableConcept": {
+                "coding": [
+                    {
+                        "system": "http://snomed.info/sct",
+                        "code": "162864005",
+                        "display": "Depressed mood"
+                    }
+                ]
+            }
+        }
+    ],
+    "note": [
+        {
+            "text": "Prescribe talking therapies and medications"
+        }
+    ]
+}
+)
