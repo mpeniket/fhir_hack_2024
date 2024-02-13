@@ -19,3 +19,6 @@ def upload_file():
     uploaded_filepath = upload_file_to_folder(request.files)
     
     return redirect("/")
+
+# This endpoint will be used to send the text to OpenAI 
+@app.route("/encoding", methods=["POST"])
