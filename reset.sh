@@ -1,0 +1,1 @@
+docker system prune -a && docker volume prune -a && docker compose up

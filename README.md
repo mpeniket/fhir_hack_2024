@@ -2,8 +2,8 @@
 
 # Get started
 
-1. Create virtual environment.
+1. Run `docker compose up`
 
-2. `pip install requirements.txt`
+2. Go to `http://localhost:8000/` in your browser
 
-3. Run `flask --app main --debug run`
+Can restart + rebuild using command in `reset.sh`
