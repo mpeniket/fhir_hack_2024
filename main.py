@@ -16,6 +16,6 @@ def upload_file():
 
     print(request.files)
 
-    upload_file_to_folder(request.files)
+    uploaded_filepath = upload_file_to_folder(request.files)
     
     return redirect("/")
