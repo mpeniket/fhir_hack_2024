@@ -60,15 +60,10 @@ def upload_file():
 @app.route("/encoding", methods=["POST", "GET"])
 def encoding():
 
-<<<<<<< HEAD
     transcription = None
     with open('/uploads/transcription.txt', 'r') as f:
         transcription = f.read()
     res = openai_chat_completion(transcription)
-=======
-    t = transcription
-    res = openai_chat_completion(t)
->>>>>>> 4a5df05ae0d569710454f7b1177d2f9bd53a7ced
 
     # return render_template("/form.html")
     return render_template("/form.html", field1=transcription, field2=res)
