@@ -12,22 +12,21 @@
 
 {% block content %}
 <div class="container">
-    <div class="row">
-        <div class="row">
-            <div class="col">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="row h-100">
+            <div class="col main h-100 mx-5 p-5">
                 <h2>Transcription</h2>
-                <p>{{ transcription }}</p>
+                <textarea  rows="20" cols="60" >{{ transcription }}</textarea>
             </div>
-            <div class="col">
+            <div class="col main h-100 p-5 ">
                 <h2 class="form-label">Generated clinical letter</h2>
-                <textarea class="form-control h-100" id="autosizeTextarea">
+                <textarea class="" rows="20" cols="60">
                     {{ clinical_letter }}
-                </textarea>
-                <button type="submit" class="btn btn-primary">Confirm</button>
+                </textarea  >
             </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col main h-100 p-5">
                 <h2>FIHR Query</h2>
                 <pre> {{ fihr_json }} </pre>
             </div>
