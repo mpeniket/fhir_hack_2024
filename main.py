@@ -16,5 +16,14 @@ def index():
 def upload_file():
 
     uploaded_filepath = upload_file_to_folder(request.files)
-    
+
+    model = whisper.load_model("base")
+    options = whisper.DecodingOptions(language='en')
+    result = model.transcribe(
+        uploaded_filepath,
+        verbose=True,
+        **options
+    )
+
     return redirect("/")
+
