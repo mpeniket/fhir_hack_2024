@@ -16,7 +16,7 @@
         <div class="row h-100">
             <div class="col main h-100 mx-5 p-5">
                 <h2>Transcription</h2>
-                <p  rows="20" cols="50" >{{ transcription }}</p>
+                <p rows="20" cols="50">{{ transcription }}</p>
             </div>
             <div class="col main h-100 p-5 ">
                 <div class="row">
@@ -27,10 +27,10 @@
                         <button class="btn btn-outline-secondary" type="button" id="copyButton">Copy</button>
                     </div>
                 </div class="row">
-                
-                <textarea class="" rows="20" cols="60" id = 'copyInput'>
-                    {{ clinical_letter }}
-                </textarea  >
+
+                <p>{{ clinical_letter }}</p>
+
+
             </div>
         </div>
         <div class="row">
@@ -46,13 +46,13 @@
                 <pre id="fihrOutput"> {{ fihr_json }} </pre>
             </div>
         </div>
-        
-        
+
+
     </div>
 </div>
 
 <script>
-    document.getElementById('copyButton').addEventListener('click', function() {
+    document.getElementById('copyButton').addEventListener('click', function () {
         const copyText = document.getElementById('copyInput').value;
         navigator.clipboard.writeText(copyText).then(() => {
             // Success feedback
@@ -63,7 +63,7 @@
         });
     });
 
-    document.getElementById('fihrCopy').addEventListener('click', function() {
+    document.getElementById('fihrCopy').addEventListener('click', function () {
         const copyText = document.getElementById('fihrOutput').textContent;
         navigator.clipboard.writeText(copyText).then(() => {
             // Success feedback
@@ -73,8 +73,7 @@
             console.error('Error in copying text: ', err);
         });
     });
-    
+
 </script>
 
 {% endblock %}
-
