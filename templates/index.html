@@ -2,22 +2,18 @@
 
 {% block content %}
 <div class="container main">
-    <div class="row h-100 justify-content-center">
-        <div class="col text-center d-flex flex-column align-items-center justify-content-center">
-            <div class="row">
-                <h1 class="">Consultatation Transcriber - > FIHR Query</h1>
-            </div>
-            <div class="row m-5">
-                <div class="col">
-                    <h2>Upload Consultation Audio</h2>
-                    <form action="/upload" method="post" enctype="multipart/form-data">
-                        <input type="file" name="file">
-                        <input type="submit" value="Upload">
-                    </form>
-                </div>
-            </div>
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-6 text-center">
+            <img src="/static/logo.jpeg" alt="ClinScribe Logo" class="mb-3 logo">
+            <h1 class="mb-3">ClinScribe™</h1>
+            <p class="mb-5">ClinScribe is a consultation transcriber that converts audio files into a clinical letter and a FHIR json.  Simply upload your consultation audio file below to get started.</pclass=>
+            <h4>Upload Consultation Audio Here:</h4>
+            <form action="/upload" method="post" enctype="multipart/form-data" class="d-flex flex-column align-items-center">
+                <input type="file" name="file" class="form-control my-3">
+                <input type="submit" value="Upload" class="btn btn-primary">
+            </form>
             {% if url %}
-            <p>File uploaded successfully: <a href="{{ url }}">{{ url }}</a></p>
+            <p class="mt-5">File uploaded successfully: <a href="{{ url }}" class="text-decoration-none">{{ url }}</a></p>
             {% endif %}
         </div>
     </div>
