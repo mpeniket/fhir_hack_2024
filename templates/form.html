@@ -1,25 +1,40 @@
+<!-- 
+
+
+```json
+
+```
+
+
+ -->
+
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="row">
-    <div class="col">
-        <h2>Transcription</h2>
-        <p>{{ transcription }}</p>
-    </div>
+<div class="container">
     <div class="row">
-        <div class="col">
-            <h2>FIHR Query</h2>
-            <p> {{ fihr_json }}</p>
-        </div>
-    </div>
-    <div class="col">
-        <form method="post">
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Generated clinical letter</label>
-                <pre>{{ clinical_letter }}</pre>
+        <div class="row">
+            <div class="col">
+                <h2>Transcription</h2>
+                <p>{{ transcription }}</p>
             </div>
-            <button type="submit" class="btn btn-primary">Confirm</button>
-        </form>
+            <div class="col">
+                <h2 class="form-label">Generated clinical letter</h2>
+                <textarea class="form-control h-100" id="autosizeTextarea">
+                    {{ clinical_letter }}
+                </textarea>
+                <button type="submit" class="btn btn-primary">Confirm</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h2>FIHR Query</h2>
+                <pre> {{ fihr_json }} </pre>
+            </div>
+        </div>
+        
+        
     </div>
 </div>
+
 {% endblock %}
