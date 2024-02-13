@@ -46,4 +46,33 @@ input[type="submit"]:hover {
 
 textarea {
     min-height: 55vh!important;
+h1, h2 {
+    color: #333;
+}
+
+.form-control {
+    width: 100%;
+}
+
+.btn {
+    width: 100%;
+    max-width: 200px;
+}
+
+a {
+    color: #007bff;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+    border-radius: 50%;
+}
+
+.container.main {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    margin-top: 50px;
+    background-color: white;
+    border: 2px solid grey;
 }
