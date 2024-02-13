@@ -2,6 +2,7 @@ from flask import render_template, redirect, request, Flask
 from utils.utils import upload_file_to_folder
 import whisper
 from utils.utils import openai_chat_completion
+from uploads.transcription import transcription
 
 
 app = Flask(__name__)
@@ -20,20 +21,17 @@ def upload_file():
     uploaded_filepath = upload_file_to_folder(request.files)
 
     model = whisper.load_model("base")
-    options = whisper.DecodingOptions(language='en')
-    result = model.transcribe(
-        uploaded_filepath,
-        verbose=True,
-        **options
-    )
+    options = whisper.DecodingOptions(language="en")
+    result = model.transcribe(uploaded_filepath, verbose=True, **options)
 
     return redirect("/")
 
-# This endpoint will be used to send the text to OpenAI 
+
+# This endpoint will be used to send the text to OpenAI
 @app.route("/encoding", methods=["POST", "GET"])
 def encoding():
 
-    transcription = request.form.get("transcription")
+    transcription = transcription
     res = openai_chat_completion(transcription)
 
     # return render_template("/form.html")
