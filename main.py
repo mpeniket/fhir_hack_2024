@@ -69,6 +69,7 @@ def encoding():
     fihr_json, clinical_letter = openai_chat_completion(transcription)
     
     fihr_json = fihr_json.replace('```json','').replace('```','')
+    clinical_letter = clinical_letter.replace('```html','').replace('```','')
     
     print(transcription)
     print(fihr_json)
