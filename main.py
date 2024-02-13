@@ -5,9 +5,9 @@ from utils.utils import openai_chat_completion
 from uploads.transcription import transcription
 from openai import OpenAI
 
-client = OpenAI()
-
 OPENAI_API_KEY="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"
+
+client = OpenAI(api_key=OPENAI_API_KEY)
 
 app = Flask(__name__)
 
@@ -23,15 +23,17 @@ def index():
 def upload_file():
     
     uploaded_filepath = upload_file_to_folder(request.files)
-
-    audio_file= open(uploaded_filepath, "rb")
-    transcript = client.audio.transcriptions.create(
-    model="whisper-1", 
-    file=audio_file,
-    response_format="text",
-    language= E)
-    print(transcript.words)
     
+    with open('./uploads/Clinical.mp3', 'rb') as audio_file:
+        print(f"{audio_file=}")
+        transcript = client.audio.transcriptions.create(
+        model="whisper-1", 
+        file=audio_file,
+        response_format="text",
+        )
+
+        # print(transcript.words)
+    print(f"{uploaded_filepath=}")
     return redirect("/")
 
 
