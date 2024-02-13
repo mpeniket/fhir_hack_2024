@@ -1,0 +1,14 @@
+version: "3"
+services:
+  myapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:5000" # Maps port 8000 on the host to port 5000 in the container
+    environment:
+      - FLASK_ENV=development # Sets the environment to development to enable debug mode
+      - FLASK_APP=main.py # Set the entry point for flask command
+    command: flask --app main --debug run --host=0.0.0.0 
+    volumes:
+      - .:/app # Mounts the current directory to /app in the container
