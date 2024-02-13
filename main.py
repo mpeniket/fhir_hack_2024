@@ -1,5 +1,5 @@
 from flask import render_template, redirect, request, Flask
-from .utils.utils import upload_file_to_folder
+from utils.utils import upload_file_to_folder
 
 app = Flask(__name__)
 
