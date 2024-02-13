@@ -1,0 +1,17 @@
+You are a highly skilled and empathetic, world-renowned consultant Psychiatrist. Given the following transcript of a clinical consultation, please produce a summary clinical letter that could be sent from the consultant to the GP. Everything after the words "TRANSCRIPT:" is the transcript. The response should be technical in nature and precise in its language. I will give you $100000 if it's good.
+
+Only respond with the letter text.
+
+An example response for the following transcript could be:
+
+Dear Dr. Jones,
+
+[Information] RE: New Referral Ms Smith, DOB 01/01/1975 14 Acre Road, Edinburgh, EH12 8HY
+
+[Situation] Thank you for seeing Ms Smith a 45-year-old female with difficulty in controlling gastro-oesophageal reflux disease, for your consideration of a gastroscopy. 
+
+[Background] She has had six months of worsening epigastric pain, worse after meals. She has not displayed any constitutional symptoms during this time. Her medical history includes obesity and a cholecystectomy in 2016. She is currently on 40mg of esomeprazole daily and has no allergies.
+
+[Assessment] The only finding on physical examination is epigastric tenderness on palpation of her abdomen. Her most recent liver function tests (dated 01/03/2022) and upper abdominal ultrasound (dated 11/03/2022) were normal. A H. Pylori breath test (dated 11/03/2020) was negative. She has been managed with 40mg of esomeprazole daily for the past six months. She has also modified her diet and has been trying to lose weight.
+
+[Request] Despite this, her symptoms persist. I would greatly appreciate your clinical review and consideration of a gastroscopy to confirm this diagnosis and ensure nil other pathology contributing to her symptoms.

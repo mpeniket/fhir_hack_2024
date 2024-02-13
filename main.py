@@ -46,7 +46,7 @@ def upload_file():
         }
         # Make the POST request
         response = requests.post(url, headers=headers, files=files, data=data)
-        print(response.json())
+ 
         transcription = response.json()['text']
     
         with open('uploads/transcription.txt', 'w') as f:
@@ -61,9 +61,8 @@ def upload_file():
 def encoding():
 
     transcription = None
-    with open('/uploads/transcription.txt', 'r') as f:
+    with open('uploads/transcription.txt', 'r') as f:
         transcription = f.read()
-    res = openai_chat_completion(transcription)
+    fihr_json, clinical_letter = openai_chat_completion(transcription)
 
-    # return render_template("/form.html")
-    return render_template("/form.html", field1=transcription, field2=res)
+    return render_template("form.html", transcription=transcription, fihr_json=fihr_json, clinical_letter=clinical_letter)
