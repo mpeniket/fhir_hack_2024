@@ -16,11 +16,18 @@ def upload_file_to_folder(request_files, folder_path="./uploads/"):
         file.save(filepath)
         return filepath
     
-def extract_data(json_data):
+class ResultObject:
+    def __init__(self, reason_code_display, supporting_info_items, note):
+        self.reason_code_display = reason_code_display
+        self.supporting_info_items = supporting_info_items
+        self.note = note
+
+def unpack_json(json_data):
     data = json.loads(json_data)
     
     reason_code = data.get("reasonCode", [])
     reason_code_display = [code.get("coding", [{}])[0].get("display") for code in reason_code]
+    reason_code_display_str = ", ".join(reason_code_display)
     
     supporting_info = data.get("supportingInfo", [])
     supporting_info_items = []
@@ -32,7 +39,7 @@ def extract_data(json_data):
     
     note = data.get("note", [{}])[0].get("text")
     
-    return reason_code_display, supporting_info_items, note
+    return ResultObject(reason_code_display_str, supporting_info_items, note)
 
 def openai_chat_completion(transcription):
     """Send the transcription to OpenAI's chat completion API"""

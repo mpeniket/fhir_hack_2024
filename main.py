@@ -5,6 +5,10 @@ from utils.utils import openai_chat_completion
 from uploads.transcription import transcription
 from openai import OpenAI, audio
 import openai
+from flask import render_template, redirect, request, Flask
+from utils.utils import upload_file_to_folder, openai_chat_completion, unpack_json
+import whisper
+from uploads.transcription import transcription, res
 
 
 OPENAI_API_KEY = "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"
@@ -60,10 +64,10 @@ def upload_file():
 @app.route("/encoding", methods=["POST", "GET"])
 def encoding():
 
-    transcription = None
-    with open('/uploads/transcription.txt', 'r') as f:
-        transcription = f.read()
-    res = openai_chat_completion(transcription)
+    t = transcription
+    # res = openai_chat_completion(t)
+    r = unpack_json(res)
 
     # return render_template("/form.html")
-    return render_template("/form.html", field1=transcription, field2=res)
+    return render_template("/form.html", field1=transcription, field2=r.reason_code_display, field3=r.supporting_info_items, field4=r.note)
+
