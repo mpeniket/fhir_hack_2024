@@ -16,11 +16,19 @@
         <div class="row h-100">
             <div class="col main h-100 mx-5 p-5">
                 <h2>Transcription</h2>
-                <textarea  rows="20" cols="50" >{{ transcription }}</textarea>
+                <p  rows="20" cols="50" >{{ transcription }}</p>
             </div>
             <div class="col main h-100 p-5 ">
-                <h2 class="form-label">Generated clinical letter</h2>
-                <textarea class="" rows="20" cols="60">
+                <div class="row">
+                    <div class="col">
+                        <h2 class="form-label">Generated clinical letter</h2>
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-outline-secondary" type="button" id="copyButton">Copy</button>
+                    </div>
+                </div class="row">
+                
+                <textarea class="" rows="20" cols="60" id = 'copyInput'>
                     {{ clinical_letter }}
                 </textarea  >
             </div>
@@ -35,5 +43,19 @@
         
     </div>
 </div>
+
+<script>
+    document.getElementById('copyButton').addEventListener('click', function() {
+        const copyText = document.getElementById('copyInput').value;
+        navigator.clipboard.writeText(copyText).then(() => {
+            // Success feedback
+            alert('Text copied to clipboard');
+        }).catch(err => {
+            // Error feedback
+            console.error('Error in copying text: ', err);
+        });
+    });
+    
+</script>
 
 {% endblock %}
