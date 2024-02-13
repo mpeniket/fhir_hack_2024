@@ -28,7 +28,7 @@ def openai_chat_completion(transcription):
         messages=[
             {
                 "role": "system",
-                "content": """You are a beneficial, computer science professor who's the foremost expert in the FIHR open health data standard. You have been tasked with converting the following transcription (everything following the text "TRANSCRIPTION:") of a clinical consultation into a FIHR query that is perfectly formatted in JSON format that could be inserted into a FIHR database. The usecase is for inserting this transcription into a FIHR-supported EHR. Only respond with the JSON object. TRANSCRIPTION:{transcription}""",
+                "content": f"""You are a beneficial, computer science professor who's the foremost expert in the FIHR open health data standard. You have been tasked with converting the following transcription (everything following the text "TRANSCRIPTION:") of a clinical consultation into a FIHR query that is perfectly formatted in JSON format that could be inserted into a FIHR database. The usecase is for inserting this transcription into a FIHR-supported EHR. Only respond with the JSON object. TRANSCRIPTION:{transcription}""",
             },
         ],
     )
