@@ -21,7 +21,7 @@ def openai_chat_completion(transcription):
     # The API key is stored in a .env file
     api_key = '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'
 
-    client = OpenAI()
+    client = OpenAI(api_key=api_key)
 
     completion = client.chat.completions.create(
     model="gpt-3.5-turbo",
@@ -30,6 +30,6 @@ def openai_chat_completion(transcription):
         {"role": "user", "content": "Hello!"}
     ]
     )
-
-    print(completion.choices[0].message)
-    return completion.choices[0].message
+    messages = completion.choices[0].message
+    print(messages)
+    return messages.content

@@ -27,7 +27,7 @@ def upload_file():
 def encoding():
 
     transcription = request.form.get("transcription")
-    # res = openai_chat_completion(transcription)
+    res = openai_chat_completion(transcription)
 
     # return render_template("/form.html")
-    return render_template("/form.html", field1=transcription)
+    return render_template("/form.html", field1=transcription, field2=res)
