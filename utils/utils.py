@@ -19,7 +19,8 @@ def openai_chat_completion(transcription):
     """Send the transcription to OpenAI's chat completion API
     """
     # The API key is stored in a .env file
-    api_key = os.getenv("OPENAI_API_KEY")
+    api_key = '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'
+
     client = OpenAI()
 
     completion = client.chat.completions.create(
@@ -31,3 +32,4 @@ def openai_chat_completion(transcription):
     )
 
     print(completion.choices[0].message)
+    return completion.choices[0].message
