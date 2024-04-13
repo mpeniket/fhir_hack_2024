@@ -1,5 +1,5 @@
 import os
-from openai import OpenAI
+from openai import AzureOpenAI
 import json
 
 
@@ -48,10 +48,14 @@ def extract_data(json_data):
 
 def openai_chat_completion(transcription):
     """Send the transcription to OpenAI's chat completion API"""
-    # The API key is stored in a .env file
-    api_key = "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"
+    
+    print(f'********{os.getenv("AZURE_OPENAI_ENDPOINT")=} {os.getenv('KEY1')}')
 
-    client = OpenAI(api_key=api_key)
+    client = AzureOpenAI(
+        azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
+        api_key=os.getenv("KEY1"),
+        api_version="2024-02-15-preview"
+    )
 
     example_fihr_object = None
     with open("utils/example_fihr_json.txt", "r") as f:

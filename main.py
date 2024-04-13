@@ -3,13 +3,12 @@ from utils.utils import upload_file_to_folder
 
 from utils.utils import openai_chat_completion
 from openai import OpenAI, audio
-import openai
 from flask import render_template, redirect, request, Flask
 from utils.utils import upload_file_to_folder, openai_chat_completion
 from uploads.transcription import transcription, res
+import os
 
-
-OPENAI_API_KEY = "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"
+OPENAI_API_KEY = os.environ.get('KEY1')
 
 client = OpenAI(api_key=OPENAI_API_KEY)
 
