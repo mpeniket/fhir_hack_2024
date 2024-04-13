@@ -56,6 +56,7 @@ def openai_chat_completion(transcription):
         api_key=os.getenv("KEY1"),
         api_version="2024-02-15-preview"
     )
+    model_name = "fhir"
 
     example_fihr_object = None
     with open("utils/example_fihr_json.txt", "r") as f:
@@ -64,7 +65,7 @@ def openai_chat_completion(transcription):
     res = []
 
     completion = client.chat.completions.create(
-        model="gpt-4-turbo-preview",
+        model=model_name,
         messages=[
             {
                 "role": "system",
@@ -80,7 +81,7 @@ def openai_chat_completion(transcription):
         example_clinical_letter = f.read()
 
     completion = client.chat.completions.create(
-        model="gpt-4-turbo-preview",
+        model=model_name,
         messages=[
             {
                 "role": "system",
